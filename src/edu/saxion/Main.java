@@ -11,6 +11,7 @@ public class Main {
     public static void main(String[] args)  {
         Scanner scanner = new Scanner(System.in);
         String filename= scanner.next();
+        SpellingDictionary example = new SpellingDictionary();
 
         Path path = Paths.get(filename);
         Path outPath= Paths.get("outFile.txt");
@@ -18,13 +19,18 @@ public class Main {
         try (BufferedReader br = Files.newBufferedReader(path);
              BufferedWriter bw = Files.newBufferedWriter(outPath)){
             String line ;
+            String[] arrayLine = new String[0];
            // int i=0;
             while ((line = br.readLine()) != null){
              //   args[i].equals(line);
+                arrayLine = line.split(" ");
                 bw.write(line);
                 bw.newLine();
                // i++;
                 // System.out.println(line);
+            }
+            for (String splittedWord : arrayLine ){
+                System.out.println(splittedWord);
             }
 
         }catch (IOException iox){
